@@ -70,3 +70,9 @@ Now I can test running the image locally, on a WASM runtime:
 .. and a normal container runtime
 
 `docker run gowasm:go`
+
+# Conclusion
+
+Maybe i'm missing something so far but to load 1MB of JSON data and unmarshal it into an object structure takes 0.31s in WASM and only 0.01s in natively compiled Go code. So while WASM might be faster than Javascript i'm not convinced it will be any faster than containerised runtime.
+
+I'll continue to try with Kubernetes but it seems this may be a soon abandoned experiment :)
