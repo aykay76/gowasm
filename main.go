@@ -3,5 +3,5 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println("Golang WASM")
+	fmt.Println("WASMing it with Golang!")
 }
