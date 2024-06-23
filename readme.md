@@ -56,12 +56,17 @@ I'll need to build an OCI image for the WASM application:
 
 https://docs.docker.com/desktop/wasm/
 
-.. Create Dockerfile .. 
+.. Create Dockerfiles .. 
 
-`docker build -t gowasm:latest .`
+`docker build -t gowasm:wasm -f ./Dockerfilewasm .`
+`docker build -t gowasm:go -f ./Dockerfilego .`
 
 ## Run
 
 Now I can test running the image locally, on a WASM runtime:
 
-`docker run --runtime=io.containerd.wasmtime.v1 gowasm`
+`docker run --runtime=io.containerd.wasmtime.v1 gowasm:wasm`
+
+.. and a normal container runtime
+
+`docker run gowasm:go`

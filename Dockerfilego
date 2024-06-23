@@ -1,0 +1,12 @@
+FROM golang:1.22 AS build-stage
+WORKDIR /
+COPY go.mod ./
+RUN go mod download
+COPY *.go ./
+RUN go build -o main *.go
+
+FROM scratch
+WORKDIR /
+COPY --from=build-stage /main /main
+COPY 2020_OCTOBER.json /
+ENTRYPOINT ["/main"]

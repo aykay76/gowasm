@@ -3,9 +3,10 @@ WORKDIR /
 COPY go.mod ./
 RUN go mod download
 COPY *.go ./
-RUN GOOS=wasip1 GOARCH=wasm go build -o main.wasm main.go
+RUN GOOS=wasip1 GOARCH=wasm go build -o main.wasm *.go
 
 FROM scratch
 WORKDIR /
 COPY --from=build-stage /main.wasm /main.wasm
+COPY 2020_OCTOBER.json /
 ENTRYPOINT ["/main.wasm"]
